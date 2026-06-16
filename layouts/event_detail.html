@@ -1,1 +1,35 @@
+---
+layout: default
+---
+<div class="event-detailed-container">
+  <div class="event-hero-banner" style="background-image: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.95)), url('{{ page.banner_image }}');">
+    <div class="banner-inner">
+      <span class="event-tag-type">{{ page.event_type }}</span>
+      <h1 class="event-main-title">{{ page.title }}</h1>
+      <div class="event-quick-meta">
+        <span>📅 <strong>Date:</strong> {{ page.event_date }}</span>
+        <span>📍 <strong>Venue:</strong> {{ page.location }}</span>
+        <span>⏳ <strong>Submission Deadline:</strong> {{ page.submission_deadline }}</span>
+      </div>
+    </div>
+  </div>
 
+  <div class="event-body-layout">
+    <div class="event-text-content">
+      {{ content }}
+    </div>
+
+    {% if page.gallery_folder %}
+      <section class="event-gallery-section">
+        <h2>Event Photo Gallery</h2>
+        <div class="gallery-masonry-grid">
+          {% for image in page.gallery_images %}
+            <div class="gallery-item">
+              <img src="{{ image }}" alt="Conference Session" class="gallery-img" onclick="openLightbox(this.src)">
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</div>
